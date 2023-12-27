@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Recommender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 30px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Restaurant Recommender!</h1>
+
+    <!-- Form to get recommendations -->
+    <form action="/recommendations" method="post" style="max-width: 300px; margin: 0 auto;">
+        <label for="user" style="display: block; margin-bottom: 10px;">Enter User:</label>
+        <input type="text" id="user" name="user" required style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 15px;">
+        <label for="restaurant" style="display: block; margin-bottom: 10px;">Enter a Restaurant Name:</label>
+        <input type="text" id="restaurant" name="restaurant" required style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 15px;">
+        <input type="submit" value="Get Recommendations" style="background-color: #4caf50; color: #fff; cursor: pointer; width: 100%; padding: 10px; box-sizing: border-box;">
+    </form>
+
+
+    <!-- Section to display top 10 rated restaurants -->
+    <h2>Top 10 Rated Restaurants:</h2>
+    <ul>
+        {% for top_rated in top_rated_restaurants %}
+            <li>{{ top_rated }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

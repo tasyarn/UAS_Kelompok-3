@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 30px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h2>Restaurant Recommendations : </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Visit Website</th>
+                <th>Cost</th>
+                <th>Collections</th>
+                <th>Cuisines</th>
+                <th>Timings</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for restaurant in recommendations %}
+                {% for index, row in restaurant_metadata.iterrows() %}
+                    {% if row['Name'] == restaurant %}
+                        <tr>
+                            <td>{{ restaurant }}</td>
+                            <td><a href="{{ row['Links'] }}" target="_blank">Visit Website</a></td>
+                            <td>{{ row['Cost'] }}</td>
+                            <td>{{ row['Collections'] }}</td>
+                            <td>{{ row['Cuisines'] }}</td>
+                            <td>{{ row['Timings'] }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
